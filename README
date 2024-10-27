@@ -1,0 +1,27 @@
+Theme of the project: H3@RT$ W3RE M3@NT T0 F7¥
+
+## OVERVIEW ##
+
+* This project is responsible for managing VM's for any project that the user needs, with some adjustment for the user's specific configuration.
+* Within the project/ directory, you'll find a bin and configs folder.
+
+## PROJECT/BIN ##
+
+* bin contains scripts used to help setup the VM or setup the environment for your project if you need specific scripts.
+* The generatePass.sh script included accepts a commandline argument, and that argument is the password you want for the root user.
+* You can just leave root as is, but for my project, I needed it so that the root mysql user had the password I was expecting. That way I can  run the import scripts for the DB
+* The files it creates go into the configs/ folder
+
+## PROJECT/CONFIGS ##
+
+* Configs contains config files for various services you might utilize for your project.  I have some for my apache server.
+* It also contains the plaintext and hashed password generate from the bin/generatePass.sh script mentioned above.
+* You must run this script locally, it won't do anything useful if you're logged into the vagrant machine
+
+## SETTING UP YOUR PROJECT ##
+
+* I mean idk what type-a project you're running, but for me I did a git pull, the contents of which are in a folder.
+* From there, I make a synced_folder in the VagrantFile, and I sync the project directory to be called /vagrant on the VM
+* From there, I create a symlink for the /var/www directory based on my /vagrant directory.
+* From there, idk you figure it out, its your project.  There's the modules and manifests folder, but I haven't managed to figure that out yet.
+* Modules is supposed to hold the init.pp file for the tool you want to install, but I need to commit sometime rn so I can't explain it.
