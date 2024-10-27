@@ -11,6 +11,7 @@ Theme of the project: H3@RT$ W3RE M3@NT T0 F7¥
 * The generatePass.sh script included accepts a commandline argument, and that argument is the password you want for the root user.
 * You can just leave root as is, but for my project, I needed it so that the root mysql user had the password I was expecting. That way I can  run the import scripts for the DB
 * The files it creates go into the configs/ folder
+* .dbpass contains the plaintext password, and .secret contains the hashed version.  Rename it however you want, its your project
 
 ## PROJECT/CONFIGS ##
 
@@ -25,3 +26,9 @@ Theme of the project: H3@RT$ W3RE M3@NT T0 F7¥
 * From there, I create a symlink for the /var/www directory based on my /vagrant directory.
 * From there, idk you figure it out, its your project.  There's the modules and manifests folder, but I haven't managed to figure that out yet.
 * Modules is supposed to hold the init.pp file for the tool you want to install, but I need to commit sometime rn so I can't explain it.
+
+## MISC ##
+* If you run into a segmentation fault caused by ruby at the END of the vagrant up process, you probably will need to install a package for that.  Nt sure why, don't care either
+
+vagrant plugin install ffi --plugin-version 1.16.3
+
