@@ -75,14 +75,14 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
    config.vm.provision "shell", inline: <<-SHELL
      apt-get update
-     apt-get install -y --force-yes apache2
-     apt-get install -y --force-yes puppet
-     apt-get install -y --force-yes python3
-     apt-get install -y --force-yes python3-pip
-     apt-get install -y --force-yes openssl
-     apt-get install -y --force-yes nodejs
-     apt-get install -y --force-yes npm
-     apt-get install -y --force-yes gulp
+     apt-get install -y apache2
+     apt-get install -y puppet
+     apt-get install -y python3
+     apt-get install -y python3-pip
+     apt-get install -y openssl
+     apt-get install -y nodejs
+     apt-get install -y npm
+     apt-get install -y gulp
      npm install
      npm update
      npm install gulp-sass --save-dev

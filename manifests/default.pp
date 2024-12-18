@@ -1,6 +1,7 @@
 # using the module path instead of the absolute path would end up storing your secret in git, which is what you are trying to avoid
 $password = file("/vagrant/configs/.secret")
 $dbpass = file("/vagrant/configs/.dbpass")
+$env = file("/vagrant/configs/environments")
 
 
 user { 'root':
@@ -33,6 +34,12 @@ package { 'bs4':
 }
 
 package { 'scrapy_proxies':
+    ensure   => 'latest',
+    provider => 'pip',
+    require => Package["Scrapy"],
+}
+
+package { 'scrapy_fake_useragent':
     ensure   => 'latest',
     provider => 'pip',
     require => Package["Scrapy"],
