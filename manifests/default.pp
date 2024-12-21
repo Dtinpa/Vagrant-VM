@@ -3,7 +3,6 @@ $password = file("/vagrant/configs/.secret")
 $dbpass = file("/vagrant/configs/.dbpass")
 $env = file("/vagrant/configs/environments")
 
-
 user { 'root':
     ensure => present,
     password => "$password"
