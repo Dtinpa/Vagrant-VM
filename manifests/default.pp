@@ -1,7 +1,18 @@
 # using the module path instead of the absolute path would end up storing your secret in git, which is what you are trying to avoid
 $password = file("/vagrant/configs/.secret")
 $dbpass = file("/vagrant/configs/.dbpass")
-$env = file("/vagrant/configs/environments")
+$env = file("/vagrant/configs/environment")
+$envvars = file("/vagrant/configs/envvars")
+
+file { '/etc/environment':
+    ensure => file,
+    content => "$env",
+}
+
+file { '/etc/apache2/envvars':
+    ensure => file,
+    content => "$envvars",
+}
 
 user { 'root':
     ensure => present,
@@ -58,16 +69,22 @@ package { 'php-mysql':
 
 exec { 'create-database':
   creates => '/opt/dbinstalledquirkcreation',
-  command => "/usr/bin/mysql -u root -p$dbpass < /vagrant/GenerateStand/backups/initialize.sql",
+  command => "/usr/bin/sudo /usr/bin/mysql -u root -p$dbpass < /vagrant/GenerateStand/backups/initialize.sql",
   require => Service['mysql']
 }
 
 exec { 'insert-database':
   creates => '/opt/dbinstalledquirkcreation',
-  command => "/usr/bin/mysql -u root -p$dbpass quirkcreation < /vagrant/GenerateStand/backups/quirkcreation.sql",
+  command => "/usr/bin/sudo /usr/bin/mysql -u root -p$dbpass quirkcreation < /vagrant/GenerateStand/backups/quirkcreation.sql",
   require => Exec['create-database']
 }
 
+exec {'composer':
+    cwd => '/vagrant/GenerateStand',
+    command => "/usr/bin/wget https://raw.githubusercontent.com/composer/getcomposer.org/fe96bbefbdb83fa3ca6504c8edea4018528a5e66/web/installer -O - -q | /usr/bin/php -- --quiet",
+    unless => "/usr/bin/test -f composer.phar",
+    require => [ Package['php'], File['/var/www'] ]
+}
 
 file { '/var/www':
    ensure => 'link',
