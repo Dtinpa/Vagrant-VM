@@ -2,3 +2,5 @@ project/GenerateStand/
 .vagrant/*
 project/configs/.secret
 project/configs/.dbpass
+project/configs/envvars
+project/configs/environment
