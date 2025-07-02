@@ -1,6 +1,0 @@
-PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
-USER=dtinva
-PASS=p@triot1
-DB=quirkcreation
-HOST=mysql:dbname=quirkcreation;host=localhost;
-MC=Donalds
