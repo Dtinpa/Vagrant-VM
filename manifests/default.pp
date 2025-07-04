@@ -79,6 +79,12 @@ exec { 'insert-database':
   require => Exec['create-database']
 }
 
+exec { 'create-oauth-tables':
+  creates => '/opt/dbinstalledquirkcreation',
+  command => "/usr/bin/sudo /usr/bin/mysql -u root -p$dbpass quirkcreation < /vagrant/GenerateStand/backups/oauth.sql",
+  require => Exec['create-database']
+}
+
 exec {'composer':
     cwd => '/vagrant/GenerateStand',
     command => "/usr/bin/wget https://raw.githubusercontent.com/composer/getcomposer.org/fe96bbefbdb83fa3ca6504c8edea4018528a5e66/web/installer -O - -q | /usr/bin/php -- --quiet",

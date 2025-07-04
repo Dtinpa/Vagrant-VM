@@ -5,6 +5,9 @@ Theme of the project: Childish Gambino - H3@RT$ W3RE M3@NT T0 F7¥
 12/18/2024: Run DMC - Walk This Way
 12/20/2024: Denzel Curry - Bulls on Parade
 07/01/2025: Asking Alexandria - Dear Insanity
+07/02/2025: Creed - Higher
+07/03/2025: Kingdom Hearts 2: Sanctuary
+07/04/2025: Pierce the Veil: Caraphenelia
 
 ## OVERVIEW ##
 
@@ -27,7 +30,7 @@ Theme of the project: Childish Gambino - H3@RT$ W3RE M3@NT T0 F7¥
 
 ## SETTING UP YOUR PROJECT ##
 
-* I mean idk what type-a project you're running, but for me I did a git pull, the contents of which are in a folder.
+* I mean idk what type-a project you're running, but for me I did a git pull, the contents of which are in the /project folder.
 * From there, I make a synced_folder in the VagrantFile, and I sync the project directory to be called /vagrant on the VM
 * From there, I create a symlink for the /var/www directory based on my /vagrant directory.
 * From there, idk you figure it out, its your project.  There's the modules and manifests folder, but I haven't managed to figure that out yet.
